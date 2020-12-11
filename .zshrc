@@ -210,3 +210,9 @@ git_page_maybe() {
         less --quit-if-one-screen --no-init --RAW-CONTROL-CHARS --chop-long-lines
     fi
 }
+
+function notifyme() {
+    MSG=${1:-'Terminal is done'}
+    TITLE=${2:-"Done!"}
+    osascript -e "display notification \"${MSG}\" with title \"${TITLE}\""
+}
