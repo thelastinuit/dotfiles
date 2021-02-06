@@ -41,7 +41,6 @@ vf() {
 
   if [ -n "$file_to_edit" ] ; then
     nvim "$file_to_edit"
-    main "$file_to_edit"
   fi
 }
 
