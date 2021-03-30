@@ -218,3 +218,12 @@ function notifyme() {
     TITLE=${2:-"Done!"}
     osascript -e "display notification \"${MSG}\" with title \"${TITLE}\""
 }
+
+function delete-branches() {
+  local branches_to_delete
+  branches_to_delete=$(git branch | fzf --multi)
+
+  if [ -n "$branches_to_delete" ]; then 
+    git branch --delete --force $branches_to_delete
+  fi
+}
