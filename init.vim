@@ -1,9 +1,15 @@
 let g:ruby_host_prog = '/Users/thelastinuit/.rvm/gems/ruby-2.7.0/bin/neovim-ruby-host'
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 let mapleader=","
+let g:indent_guides_enable_on_vim_startup = 1
 set expandtab
 set tabstop=4
 set shiftwidth=4
+set colorcolumn=80
+set cursorline
+set cursorcolumn
+highlight CursorLine ctermbg=0 guibg=lightgrey cterm=none
+highlight ColorColumn ctermbg=0 guibg=lightgrey
 nmap <Space> :Files<CR>
 nmap <Tab> :bnext!<CR>
 nnoremap <BS> :Rg<CR>
@@ -33,5 +39,12 @@ Plug 'konfekt/fastfold'
 Plug 'jwalton512/vim-blade'
 Plug 'evanleck/vim-svelte'
 Plug 'jparise/vim-graphql'
+Plug 'elixir-lang/vim-elixir'
+Plug 'jdonaldson/vaxe'
+Plug 'leafgarland/typescript-vim'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'leafOfTree/vim-vue-plugin'
+Plug 'MaxMEllon/vim-jsx-pretty'
 
 call plug#end()
