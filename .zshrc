@@ -31,14 +31,16 @@ alias ld='lazydocker'
 export PATH="$HOME/.cargo/env:$PATH"
 export GIT_AUTHOR_NAME="thelastinuit"
 vf() {
-  local files
+  select_file() {
+    given_file="$1"
+    fzf --preview="cat {}" --preview-window=right:70%:wrap --query="$given_file"
+  }
+  
+  previous_file="$1"
+  file_to_edit=`select_file $previous_file`
 
-  files=(${(f)"$(locate -Ai -0 $@ | grep -z -vE '~$' | fzf --read0 -0 -1 -m)"})
-
-  if [[ -n $files ]]
-  then
-    vim -- $files
-    print -l $files[1]
+  if [ -n "$file_to_edit" ] ; then
+    nvim "$file_to_edit"
   fi
 }
 
@@ -215,4 +217,11 @@ function notifyme() {
     MSG=${1:-'Terminal is done'}
     TITLE=${2:-"Done!"}
     osascript -e "display notification \"${MSG}\" with title \"${TITLE}\""
+}
+function delete-branches() {
+  git branch |
+    grep --invert-match '\*' |
+    cut -c 3- |
+    fzf --multi --preview="git log {}" |
+    xargs --no-run-if-empty git branch --delete --force
 }
