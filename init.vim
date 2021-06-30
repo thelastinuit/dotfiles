@@ -13,6 +13,7 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 nmap <Space> :Files<CR>
 nmap <Tab> :bnext!<CR>
 nnoremap <BS> :Rg<CR>
+let g:deoplete#enable_at_startup = 1
 
 augroup vimrcEx
   " Clear all autocmds in the group
@@ -31,7 +32,7 @@ Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'zefei/vim-wintabs'
-Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'nathanaelkane/vim-indent-guides'
 Plug 'opodartho/vim-linenum'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tmhedberg/simpylfold'
@@ -46,5 +47,6 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'leafOfTree/vim-vue-plugin'
 Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'shougo/deoplete.nvim'
 
 call plug#end()
